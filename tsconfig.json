@@ -19,7 +19,7 @@
     "lib": ["es6"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
