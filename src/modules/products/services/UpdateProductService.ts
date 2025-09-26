@@ -10,7 +10,7 @@ interface IUpdateProduct {
 }
 
 export default class UpdatProductService {
-  async excute({
+  async execute({
     id,
      name,
      price,
