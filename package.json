@@ -8,11 +8,11 @@
     "lint": "eslint . --ext .ts --fix",
     "migration:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create",
     "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/shared/typeorm/data-source.ts"
-
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/joi": "^17.2.3",
     "@types/node": "^24.4.0",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
@@ -22,6 +22,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "celebrate": "^15.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^4.21.2",

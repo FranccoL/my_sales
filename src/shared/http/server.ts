@@ -2,10 +2,12 @@ import 'reflect-metadata';
 import 'express-async-errors';
 import express from 'express';
 import cors from 'cors';
+import { errors } from 'celebrate';
 
 import routes from './routes';
 import ErrorHandleMiddleware from '../middlewares/ErrorHandleMiddleware';
 import { AppDataSource } from '../typeorm/data-source';
+import { celebrate } from 'celebrate';
 
 AppDataSource.initialize()
 .then(async () => {
@@ -15,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(routes);
+  app.use(errors());
 app.use(ErrorHandleMiddleware.haddleError);
 
 console.log('Connected to the database');

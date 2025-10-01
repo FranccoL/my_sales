@@ -1,16 +1,20 @@
 import { Router} from 'express'
 import ProductsControllers from '../controllers/ProductsControllers'
-
+import {
+  createProductSchema,
+  idParamsValidation,
+  updateProductSchema,
+} from '../schemas/ProductSchemas';
 
 
 const productsRouter = Router();
-const productController = new ProductsControllers();
+const productsController = new ProductsControllers();
 
-productsRouter.get('/', productController.index.bind(productController));
-productsRouter.get('/:id', productController.show.bind(productController));
-productsRouter.post('/', productController.create.bind(productController));
-productsRouter.put('/:id', productController.update.bind(productController));
-productsRouter.delete('/:id', productController.delete.bind(productController));
+productsRouter.get('/', productsController.index);
+productsRouter.get('/:id', idParamsValidation, productsController.show);
+productsRouter.post('/', createProductSchema, productsController.create);
+productsRouter.put('/:id', updateProductSchema, productsController.update);
+productsRouter.delete('/:id', idParamsValidation, productsController.delete);
 
 
 export default productsRouter;
