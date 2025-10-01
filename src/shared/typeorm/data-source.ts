@@ -14,4 +14,6 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME || '',
     entities: [path.join(__dirname, '../../modules/**/database/entities/*.{ts,js}')],
     migrations: ['./src/shared/typeorm/migrations/*.{ts,js}'],
+    synchronize: true,
+
 });
