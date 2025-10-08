@@ -2,8 +2,9 @@ import AppError from "@shared/errors/AppError";
 import { User } from "../database/entities/User";
 import { usersRepositories } from '../database/repositories/UsersRepositories'
 import { compare } from 'bcryptjs';
+import { Secret } from 'jsonwebtoken';
 import { sign } from 'jsonwebtoken';
-
+import 'dotenv/config';
 
 
 interface ISessionUser {
@@ -30,9 +31,9 @@ export default class SessionUserService {
           throw new AppError('Incorrect email/password combination', 401)
         }
 
-      const token = sign({}, process.env.APP_SECRET as string, {
+      const token = sign({}, process.env.APP_SECRET as Secret, {
         subject: String(user.id),
-         expiresIn: '1d',
+         expiresIn: '15d',
         });
 
       return {

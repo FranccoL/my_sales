@@ -13,6 +13,10 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ],
     "module": "commonjs",
     "target": "esnext",
     "types": ["node"],
