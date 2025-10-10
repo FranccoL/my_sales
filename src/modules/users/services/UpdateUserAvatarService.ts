@@ -5,7 +5,6 @@ import path from 'path';
 import uploadConfig from '@config/upload';
 import fs from 'fs';
 
-
 interface IUpdateUserAvatar {
   userId: number;
   avatarFileName: string;
@@ -21,16 +20,21 @@ export default class UpdateUserAvatarService {
 
     if (user.avatar) {
       const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
-      const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
 
-      if (userAvatarFileExists) {
+      try {
+
+        await fs.promises.stat(userAvatarFilePath);
+
         await fs.promises.unlink(userAvatarFilePath);
+      } catch {
+
       }
     }
 
+    // Atualiza o usuário com o novo avatar
     user.avatar = avatarFileName;
     await usersRepositories.save(user);
-    return user;
 
+    return user;
   }
 }
