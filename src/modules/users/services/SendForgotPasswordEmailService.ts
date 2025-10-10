@@ -19,7 +19,13 @@ export default class SendForgotPasswordEmailService {
 
     const token = await UserTokensRepositories.generate(user.id);
 
-
+console.log('Token de recuperação criado:');
+console.log({
+  user_id: user.id,
+  token,
+  created_at: new Date(),
+  updated_at: new Date(),
+});
   }
 }
 
